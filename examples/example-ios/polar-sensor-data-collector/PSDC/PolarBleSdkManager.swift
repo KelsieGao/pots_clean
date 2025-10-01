@@ -860,7 +860,6 @@ extension PolarBleSdkManager {
             NSLog("Device is not connected \(deviceConnectionState)")
         }
     }
-    
     func accStreamStart(settings: PolarBleSdk.PolarSensorSetting) {
         if case .connected(let device) = deviceConnectionState {
             
@@ -886,9 +885,26 @@ extension PolarBleSdkManager {
                         if let fileHandle = logFile?.fileHandle {
                             self.writeOnlineStreamLogFile(fileHandle, data)
                         }
+                        
+                        let sharedTimestamp = self.getCurrentTimestamp()
+                        
                         for item in data {
-                            NSLog("ACC    x: \(item.x) y: \(item.y) z: \(item.z) timeStamp: \(item.timeStamp)")
+                            NSLog("ACC x: \(item.x) y: \(item.y) z: \(item.z) timestamp: \(sharedTimestamp)")
+                            
+                            let accData = [
+                                "dataType": "accelerometer",
+                                "timestamp": sharedTimestamp,
+                                "deviceTimestamp": item.timeStamp,
+                                "x": item.x,
+                                "y": item.y,
+                                "z": item.z,
+                                "userId": "demo-user",
+                                "deviceId": device.deviceId
+                            ] as [String : Any]
+                            
+                            self.sendACCDataToCloud(accData)
                         }
+                        
                         Task { @MainActor in
                             self.accRecordingData.x = data.last!.x
                             self.accRecordingData.y = data.last!.y
@@ -909,6 +925,8 @@ extension PolarBleSdkManager {
             somethingFailed(text: "Device is not connected \(deviceConnectionState)")
         }
     }
+    
+    
     
     func magStreamStart(settings: PolarBleSdk.PolarSensorSetting) {
         if case .connected(let device) = deviceConnectionState {
@@ -1199,14 +1217,33 @@ extension PolarBleSdkManager {
                             self.writeOnlineStreamLogFile(fileHandle, data)
                         }
                         
-                        NSLog("HR    BPM: \(data[0].hr) rrs: \(data[0].rrsMs) rrAvailable: \(data[0].rrAvailable) contact status: \(data[0].contactStatus) contact supported: \(data[0].contactStatusSupported)")
+                        let hrValue = data[0].hr
+                        let rrAvailable = data[0].rrAvailable
+                        let contactStatus = data[0].contactStatus
+                        let contactSupported = data[0].contactStatusSupported
+                        let sharedTimestamp = self.getCurrentTimestamp()
+                        NSLog("HR BPM: \(hrValue) rrAvailable: \(rrAvailable) contact: \(contactStatus) supported: \(contactSupported) timestamp: \(sharedTimestamp)")
+                        
                         Task { @MainActor in
-                            self.hrRecordingData.hr = data[0].hr
-                            // self.hrRecordingData.rrs = data[0].rrsMs[0]
-                            self.hrRecordingData.rrAvailable = data[0].rrAvailable
-                            self.hrRecordingData.contactStatus = data[0].contactStatus
-                            self.hrRecordingData.contactStatusSupported = data[0].contactStatusSupported
+                            self.hrRecordingData.hr = hrValue
+                            self.hrRecordingData.rrAvailable = rrAvailable
+                            self.hrRecordingData.contactStatus = contactStatus
+                            self.hrRecordingData.contactStatusSupported = contactSupported
                         }
+                        
+                        // --- Cloud upload ---
+                        let json: [String: Any] = [
+                            "dataType": "heartrate",
+                            "userId": "demo-user",
+                            "timestamp": sharedTimestamp,
+                            "heartRate": hrValue,
+                            "rrAvailable": rrAvailable,
+                            "contactStatus": contactStatus,
+                            "contactStatusSupported": contactSupported,
+                            "device": device.deviceId
+                        ]
+                        self.sendHRDataToCloud(json)
+
                     case .error(let err):
                         NSLog("Hr stream failed: \(err)")
                         if let fileHandle = logFile?.fileHandle {
@@ -2465,7 +2502,53 @@ extension PolarBleSdkManager {
         self.generalMessage = Message(text: "Error: \(text)")
         NSLog("Error \(text)")
     }
-    
+    private func sendHRDataToCloud(_ hrData: [String: Any]) {
+            guard let url = URL(string: "https://saveheartrate-345080069050.us-west2.run.app") else { return }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: hrData)
+                
+                URLSession.shared.dataTask(with: request) { data, response, error in
+                    if let error = error {
+                        NSLog("Failed to upload HR data: \(error)")
+                    } else {
+                        NSLog("HR data uploaded successfully")
+                    }
+                }.resume()
+                
+            } catch {
+                NSLog("Failed to serialize HR data: \(error)")
+            }
+        }
+    private func sendACCDataToCloud(_ accData: [String: Any]) {
+        guard let url = URL(string: "https://saveheartrate-345080069050.us-west2.run.app") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: accData)
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    NSLog("Failed to upload ACC data: \(error)")
+                } else {
+                    NSLog("ACC data uploaded successfully")
+                }
+            }.resume()
+            
+        } catch {
+            NSLog("Failed to serialize ACC data: \(error)")
+        }
+    }
+    private func getCurrentTimestamp() -> String {
+        return ISO8601DateFormatter().string(from: Date())
+    }
     private func dataHeaderString(_ type: PolarDeviceDataType) -> String {
         var result = ""
         switch type {
