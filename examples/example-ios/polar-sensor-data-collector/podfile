@@ -5,7 +5,8 @@ use_frameworks!
 
 pod 'Zip', '~> 2.1.2'
 pod 'RxSwift', '~> 6.8.0'
+pod 'Supabase', '~> 2.0'
 
-target 'PSDC' do
+target 'PSDC\' do
     pod 'PolarBleSdk', :path => '../../../'
 end
