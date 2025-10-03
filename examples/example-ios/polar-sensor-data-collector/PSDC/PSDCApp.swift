@@ -26,6 +26,17 @@ struct PSDCApp: App {
                 .environmentObject(appState.bleDeviceManager)
                 .environmentObject(appState.bleSdkManager)
                 .environmentObject(appState)
+                .onAppear {
+                    // Test Supabase connection on app launch
+                    Task {
+                        let connectionSuccess = await appState.bleSdkManager.testSupabaseConnection()
+                        if connectionSuccess {
+                            print("✅ Supabase connection verified!")
+                        } else {
+                            print("❌ Supabase connection failed - check database setup")
+                        }
+                    }
+                }
         }
         
     }

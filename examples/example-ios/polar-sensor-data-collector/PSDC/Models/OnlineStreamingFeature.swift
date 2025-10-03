@@ -1,4 +1,5 @@
-/// Copyright © 2022 Polar Electro Oy. All rights reserved.
+//  Copyright © 2024 Polar. All rights reserved.
+//
 
 import Foundation
 import PolarBleSdk
@@ -6,11 +7,16 @@ import PolarBleSdk
 enum OnlineStreamingState {
     case inProgress
     case success(url: URL?)
-    case failed(error: String)
+    case failed(error: Error)
 }
 
 struct OnlineStreamingFeature {
-    var isSupported = false
-    var availableOnlineDataTypes: [PolarDeviceDataType: Bool] = Dictionary(uniqueKeysWithValues: zip(PolarDeviceDataType.allCases, [false]))
-    var isStreaming: [PolarDeviceDataType: OnlineStreamingState] = Dictionary(uniqueKeysWithValues: PolarDeviceDataType.allCases.map { ($0, OnlineStreamingState.success(url: nil)) })
+    var isSupported: Bool = false
+    var availableOnlineDataTypes: [PolarDeviceDataType: Bool] = [:]
+    var isStreaming: [PolarDeviceDataType: OnlineStreamingState] = [:]
+}
+
+struct RecordingSettings {
+    let feature: PolarDeviceDataType
+    let settings: PolarSensorSettings
 }

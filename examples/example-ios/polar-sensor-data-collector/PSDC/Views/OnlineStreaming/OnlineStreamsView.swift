@@ -7,6 +7,7 @@ import PolarBleSdk
 struct OnlineStreamsView: View {
     @EnvironmentObject private var bleSdkManager: PolarBleSdkManager
     @State private var urlToShare: IdentifiableURL?
+    @State private var showPatientSetup = false
     
     func shareURL(url: URL) {
         urlToShare = IdentifiableURL(url: url)
@@ -14,16 +15,55 @@ struct OnlineStreamsView: View {
     
     var body: some View {
 
-        if case .connected = bleSdkManager.deviceConnectionState,
-           bleSdkManager.onlineStreamingFeature.isSupported {
+        if case .connected = bleSdkManager.deviceConnectionState {
             VStack {
-                ForEach(PolarDeviceDataType.allCases) { dataType in
+                // Patient Status Section
+                if let patientId = bleSdkManager.currentPatientId {
+                    VStack(spacing: 8) {
+                        Text("✅ Patient Active")
+                            .foregroundColor(.green)
+                            .font(.headline)
+                        Text("Data uploading to Supabase")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding()
+                    .background(Color.green.opacity(0.1))
+                    .cornerRadius(10)
+                } else {
+                    VStack(spacing: 8) {
+                        Text("⚠️ No Patient Set")
+                            .foregroundColor(.orange)
+                            .font(.headline)
+                        Text("Set patient ID to enable data upload")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Button("Set Patient") {
+                            showPatientSetup = true
+                        }
+                        .padding(.top, 4)
+                    }
+                    .padding()
+                    .background(Color.orange.opacity(0.1))
+                    .cornerRadius(10)
+                }
+                
+                // Only show HR and ACC streaming options
+                VStack {
                     HStack {
-                        OnlineStreamingButton(dataType: dataType)
+                        OnlineStreamingButton(dataType: .hr)
                         Spacer()
-                        if case let .success(urlOptional) = bleSdkManager.onlineStreamingFeature.isStreaming[dataType],
+                        if case let .success(urlOptional) = bleSdkManager.onlineStreamingFeature.isStreaming[.hr],
                            let url = urlOptional {
-                            
+                            ShareButton() { shareURL(url: url) }
+                                .padding(.trailing)
+                        }
+                    }
+                    HStack {
+                        OnlineStreamingButton(dataType: .acc)
+                        Spacer()
+                        if case let .success(urlOptional) = bleSdkManager.onlineStreamingFeature.isStreaming[.acc],
+                           let url = urlOptional {
                             ShareButton() { shareURL(url: url) }
                                 .padding(.trailing)
                         }
@@ -32,8 +72,11 @@ struct OnlineStreamsView: View {
                 OnlineStreamValues()
             }
             .fullScreenCover(item: $bleSdkManager.onlineStreamSettings) { streamSettings in
-                let settings = streamSettings
-                SettingsView(streamedFeature: settings.feature, streamSettings: settings)
+                SimpleSettingsView(streamedFeature: streamSettings.feature, streamSettings: streamSettings)
+            }
+            .sheet(isPresented: $showPatientSetup) {
+                PatientSetupView()
+                    .environmentObject(bleSdkManager)
             }
             .sheet(
                 item: Binding(
@@ -74,7 +117,7 @@ struct OnlineStreamingButton: View {
     private func getStreamButtonText(_ feature:PolarDeviceDataType, _ isStreaming: OnlineStreamingState?) -> String {
         let text = getShortNameForDataType(feature)
         let buttonText:String
-        switch(isStreaming!) {
+        switch(isStreaming ?? .success(url: nil)) {
         case .inProgress:
             buttonText = "Stop \(text) Stream"
         case .success(url: _):
@@ -99,14 +142,10 @@ struct OnlineStreamingButton: View {
     }
     
     private func getStreamButtonState(_ feature: PolarDeviceDataType) -> ButtonState {
-        if(bleSdkManager.onlineStreamingFeature.availableOnlineDataTypes[feature] ?? false) {
-            if bleSdkManager.isStreamOn(feature: feature) {
-                return ButtonState.pressedDown
-            } else {
-                return ButtonState.released
-            }
+        if bleSdkManager.isStreamOn(feature: feature) {
+            return ButtonState.pressedDown
         } else {
-            return ButtonState.disabled
+            return ButtonState.released
         }
     }
 }
@@ -116,133 +155,31 @@ struct OnlineStreamValues: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 6) {
-            ForEach(bleSdkManager.onlineRecordingDataTypes) { (dataType: PolarDeviceDataType) in
-                    
-                switch dataType {
-                case .ecg:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.ecg]) != nil) {
-                            Text("ECG values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Voltage: \(bleSdkManager.ecgRecordingData.voltage)µV ")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .acc:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.acc]) != nil) {
-                            Text("Accelerometer values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Accelerometer: x: \(bleSdkManager.accRecordingData.x), y: \(bleSdkManager.accRecordingData.y), z: \(bleSdkManager.accRecordingData.z)")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .ppg:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.ppg]) != nil) {
-                            Text("PPG values:")
-                                .font(.system(size: 16)).bold()
-                            Text("ppg0: \(bleSdkManager.ppgRecordingData.ppg0)").font(.system(size: 14))
-                            Text("ppg1: \(bleSdkManager.ppgRecordingData.ppg1)").font(.system(size: 14))
-                            if (bleSdkManager.ppgRecordingData.ppg2 != 0) {
-                                Text("ppg2: \(bleSdkManager.ppgRecordingData.ppg2)").font(.system(size: 14))
-                            }
-                            
-                            if (bleSdkManager.ppgRecordingData.ppg3 != 0) {
-                                Text("ppg3: \(bleSdkManager.ppgRecordingData.ppg2)").font(.system(size: 14))
-                            }
-                            
-                            if (bleSdkManager.ppgRecordingData.ambient != 0) {
-                                Text("Ambient channel: \(bleSdkManager.ppgRecordingData.ambient)")
-                                    .font(.system(size: 14))
-                            }
-                            
-                            if (bleSdkManager.ppgRecordingData.sportId != 0) {
-                                Text("Sport id: \(String(describing: bleSdkManager.ppgRecordingData.sportId))")
-                                    .font(.system(size: 14))
-                            }
-                            
-                            if (bleSdkManager.ppgRecordingData.status != nil) {
-                                Text("Status: \(String(describing: bleSdkManager.ppgRecordingData.status ?? 0))")
-                                    .font(.system(size: 14))
-                            }
-                        }
-                    }
-                case .ppi:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.ppi]) != nil) {
-                            Text("Peak-peak interval values:")
-                                .font(.system(size: 16)).bold()
-                            Text("pp: \(bleSdkManager.ppiRecordingData.ppInMs)ms")
-                                .font(.system(size: 14))
-                            Text("Blocker bit: \(bleSdkManager.ppiRecordingData.blockerBit)")
-                                .font(.system(size: 14))
-                            Text("PP error estimate: \(bleSdkManager.ppiRecordingData.ppErrorEstimate)")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .gyro:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.gyro]) != nil) {
-                            Text("Gyroscope values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Gyroscope: x: \(String(format: "%.2f", bleSdkManager.gyroRecordingData.x)), y: \(String(format: "%.2f", bleSdkManager.gyroRecordingData.y)), z: \(String(format: "%.2f", bleSdkManager.gyroRecordingData.z))")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .magnetometer:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.magnetometer]) != nil) {
-                            Text("Magnetometer values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Magnetometer: x: \(String(format: "%.2f", bleSdkManager.magnetometerRecordingData.x)), y: \(String(format: "%.2f", bleSdkManager.magnetometerRecordingData.y)), z: \(String(format: "%.2f", bleSdkManager.magnetometerRecordingData.z))")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .hr:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.hr]) != nil) {
-                            Text("Heart rate values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Heart rate: \(bleSdkManager.hrRecordingData.hr)")
-                                .font(.system(size: 14))
-                            Text("RR available: \(bleSdkManager.hrRecordingData.rrAvailable)")
-                                .font(.system(size: 14))
-                            Text("RRs: \(bleSdkManager.hrRecordingData.rrs)")
-                                .font(.system(size: 14))
-                            Text("Contact status supported: \(bleSdkManager.hrRecordingData.contactStatusSupported)")
-                                .font(.system(size: 14))
-                            Text("Contact status: \(bleSdkManager.hrRecordingData.contactStatus)")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .temperature:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.temperature]) != nil) {
-                            Text("Temperature values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Temperature \(String(format: "%.2f", bleSdkManager.temperatureRecordingData.temperature))")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .pressure:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.pressure]) != nil) {
-                            Text("Pressure values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Pressure \(String(format: "%.2f", bleSdkManager.pressureRecordingData.pressure))")
-                                .font(.system(size: 14))
-                        }
-                    }
-                case .skinTemperature:
-                    VStack(alignment: .leading, spacing: 6) {
-                        if ((bleSdkManager.onlineStreamingFeature.isStreaming[PolarDeviceDataType.skinTemperature]) != nil) {
-                            Text("Skin temperature values:")
-                                .font(.system(size: 16)).bold()
-                            Text("Skin temperature \(String(format: "%.2f", bleSdkManager.skinTemperatureRecordingData.temperature))")
-                                .font(.system(size: 14))
-                        }
-                    }
+            // Heart Rate values
+            VStack(alignment: .leading, spacing: 6) {
+                if bleSdkManager.isStreamOn(feature: .hr) {
+                    Text("Heart rate values:")
+                        .font(.system(size: 16)).bold()
+                    Text("Heart rate: \(bleSdkManager.hrRecordingData.hr)")
+                        .font(.system(size: 14))
+                    Text("RR available: \(bleSdkManager.hrRecordingData.rrAvailable)")
+                        .font(.system(size: 14))
+                    Text("RRs: \(bleSdkManager.hrRecordingData.rrs)")
+                        .font(.system(size: 14))
+                    Text("Contact status supported: \(bleSdkManager.hrRecordingData.contactStatusSupported)")
+                        .font(.system(size: 14))
+                    Text("Contact status: \(bleSdkManager.hrRecordingData.contactStatus)")
+                        .font(.system(size: 14))
+                }
+            }
+            
+            // Accelerometer values
+            VStack(alignment: .leading, spacing: 6) {
+                if bleSdkManager.isStreamOn(feature: .acc) {
+                    Text("Accelerometer values:")
+                        .font(.system(size: 16)).bold()
+                    Text("Accelerometer: x: \(bleSdkManager.accRecordingData.x), y: \(bleSdkManager.accRecordingData.y), z: \(bleSdkManager.accRecordingData.z)")
+                        .font(.system(size: 14))
                 }
             }
         }
@@ -305,20 +242,8 @@ extension PolarDeviceDataType: Identifiable {
 }
 
 struct OnlineStreamsView_Previews: PreviewProvider {
-    private static let onlineStreamingFeature = OnlineStreamingFeature(
-        isSupported: true,
-        availableOnlineDataTypes: [PolarDeviceDataType.hr: true, PolarDeviceDataType.acc: false, PolarDeviceDataType.ppi: true, PolarDeviceDataType.gyro: false, PolarDeviceDataType.magnetometer: true, PolarDeviceDataType.ecg: false, PolarDeviceDataType.temperature: false, PolarDeviceDataType.pressure: false, PolarDeviceDataType.skinTemperature: false],
-        isStreaming: [PolarDeviceDataType.hr: .inProgress, PolarDeviceDataType.acc:  .inProgress, PolarDeviceDataType.ppi:  .inProgress, PolarDeviceDataType.gyro:  .inProgress, PolarDeviceDataType.magnetometer:  .inProgress, PolarDeviceDataType.ecg:  .inProgress, PolarDeviceDataType.temperature:  .inProgress, PolarDeviceDataType.pressure:  .inProgress, PolarDeviceDataType.skinTemperature:  .inProgress]
-    )
-    
-    private static let polarBleSdkManager: PolarBleSdkManager = {
-        let polarBleSdkManager = PolarBleSdkManager()
-        polarBleSdkManager.onlineStreamingFeature = onlineStreamingFeature
-        return polarBleSdkManager
-    }()
-    
     static var previews: some View {
         return OnlineStreamsView()
-            .environmentObject(polarBleSdkManager)
+            .environmentObject(PolarBleSdkManager())
     }
 }

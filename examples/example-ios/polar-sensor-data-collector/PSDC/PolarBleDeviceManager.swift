@@ -121,6 +121,21 @@ class PolarBleDeviceManager: ObservableObject {
     }
 }
 
+// MARK: - PolarBleApiPowerStateObserver
+extension PolarBleDeviceManager : PolarBleApiPowerStateObserver {
+    func blePowerOn() {
+        Task { @MainActor in
+            self.isBluetoothOn = true
+        }
+    }
+    
+    func blePowerOff() {
+        Task { @MainActor in
+            self.isBluetoothOn = false
+        }
+    }
+}
+
 // MARK: - PolarBleApiLogger
 extension PolarBleDeviceManager : PolarBleApiLogger {
     func message(_ str: String) {

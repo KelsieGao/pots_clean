@@ -4,12 +4,7 @@ import SwiftUI
 import PolarBleSdk
 
 enum SelectedAction: String, CaseIterable {
-    case online = "Online"
-    case offline = "Offline"
-    case h10Exercise = "H10 Exercise"
-    case settings = "Settings"
-    case logging = "Logging"
-    case activityRecordingView = "Load"
+    case online = "Heart Rate & ACC"
 }
 
 struct ContentView: View {
@@ -217,24 +212,9 @@ struct OperationModesTabView: View {
     
     var body: some View {
         ScrollView {
-            switch chosenActionView {
+                switch chosenActionView {
             case .online:
                 OnlineStreamsView()
-                    .environmentObject(bleSdkManager)
-            case .offline:
-                OfflineRecordingView()
-                    .environmentObject(bleSdkManager)
-            case .h10Exercise:
-                H10ExerciseView()
-                    .environmentObject(bleSdkManager)
-            case .settings:
-                DeviceSettingsView()
-                    .environmentObject(bleSdkManager)
-            case .logging:
-                SensorDatalogSettingsView()
-                    .environmentObject(bleSdkManager)
-            case .activityRecordingView:
-                ActivityRecordingView()
                     .environmentObject(bleSdkManager)
             }
         }
@@ -243,27 +223,8 @@ struct OperationModesTabView: View {
 
 struct ContentView_Previews: PreviewProvider {
     
-    private static let offlineRecordingEntries = OfflineRecordingEntries(
-        isFetching: false,
-        entries: [
-            PolarOfflineRecordingEntry(path: "/test/url", size: 500, date:Date(), type: .gyro),
-            PolarOfflineRecordingEntry(path: "/test/url", size: 500, date:Date(), type: .acc),
-            PolarOfflineRecordingEntry(path: "/test/url", size: 500, date:Date(), type: .magnetometer),
-            PolarOfflineRecordingEntry(path: "/test/url", size: 500, date:Date(), type: .temperature)
-        ]
-    )
-    
-    private static let offlineRecordingFeature = OfflineRecordingFeature(
-        isSupported: true,
-        availableOfflineDataTypes: [PolarDeviceDataType.hr: true, PolarDeviceDataType.acc: false, PolarDeviceDataType.ppi: true, PolarDeviceDataType.gyro: false, PolarDeviceDataType.magnetometer: true, PolarDeviceDataType.ecg: false, PolarDeviceDataType.temperature: false, PolarDeviceDataType.skinTemperature: false],
-        isRecording: [PolarDeviceDataType.hr: true, PolarDeviceDataType.acc: false, PolarDeviceDataType.ppi: true, PolarDeviceDataType.gyro: false, PolarDeviceDataType.magnetometer: true, PolarDeviceDataType.ecg: true, PolarDeviceDataType.temperature: false, PolarDeviceDataType.skinTemperature: false]
-    )
-    
     @State static var polarBleSdkManager: PolarBleSdkManager = {
         let polarBleSdkManager = PolarBleSdkManager()
-        
-        polarBleSdkManager.offlineRecordingFeature = offlineRecordingFeature
-        polarBleSdkManager.offlineRecordingEntries = offlineRecordingEntries
         return polarBleSdkManager
     }()
     

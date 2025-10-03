@@ -7,75 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D68B8DB9FA6E3A353FAE66C /* SimpleSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A97E423B64FB53C5275E4 /* SimpleSettingsView.swift */; };
+		27F398242E8FFA4400B261E4 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398232E8FFA4400B261E4 /* Auth */; };
+		27F398262E8FFA4400B261E4 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398252E8FFA4400B261E4 /* Functions */; };
+		27F398282E8FFA4400B261E4 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398272E8FFA4400B261E4 /* PostgREST */; };
+		27F3982A2E8FFA4400B261E4 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398292E8FFA4400B261E4 /* Realtime */; };
+		27F3982C2E8FFA4400B261E4 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 27F3982B2E8FFA4400B261E4 /* Storage */; };
+		27F3982E2E9008E100B261E4 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27F3982D2E9008E100B261E4 /* Auth */; };
+		27F398302E9008E100B261E4 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 27F3982F2E9008E100B261E4 /* Functions */; };
+		27F398322E9008E100B261E4 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398312E9008E100B261E4 /* PostgREST */; };
+		27F398342E9008E100B261E4 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398332E9008E100B261E4 /* Realtime */; };
+		27F398362E9008E100B261E4 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398352E9008E100B261E4 /* Storage */; };
+		27F398382E9009B000B261E4 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398372E9009B000B261E4 /* Supabase */; };
+		27F3983A2E9016BA00B261E4 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398392E9016BA00B261E4 /* Auth */; };
+		27F3983C2E9016BA00B261E4 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 27F3983B2E9016BA00B261E4 /* Functions */; };
+		27F3983E2E9016BA00B261E4 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 27F3983D2E9016BA00B261E4 /* PostgREST */; };
+		27F398402E9016BA00B261E4 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 27F3983F2E9016BA00B261E4 /* Realtime */; };
+		27F398422E9016BA00B261E4 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398412E9016BA00B261E4 /* Storage */; };
+		27F398442E9016D900B261E4 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398432E9016D900B261E4 /* Auth */; };
+		27F398462E9016D900B261E4 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398452E9016D900B261E4 /* Functions */; };
+		27F398482E9016D900B261E4 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398472E9016D900B261E4 /* PostgREST */; };
+		27F3984A2E9016D900B261E4 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 27F398492E9016D900B261E4 /* Realtime */; };
+		27F3984C2E9016D900B261E4 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 27F3984B2E9016D900B261E4 /* Storage */; };
+		3E4F4BEB80FF3106FE928A53 /* SupabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24369BEC0EB0547526FF76 /* SupabaseManager.swift */; };
+		4B1ACDDF66743177FA8F1B24 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896DBBE884A802F47E3A6D15 /* SupabaseConfig.swift */; };
 		6C2EDE8922B9FE370031AA17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C2EDE8822B9FE370031AA17 /* Assets.xcassets */; };
 		6C2EDE8C22B9FE370031AA17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C2EDE8A22B9FE370031AA17 /* LaunchScreen.storyboard */; };
 		8415B05A2C2C38FB00AA4C9B /* FirmwareUpdateFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415B0592C2C38FB00AA4C9B /* FirmwareUpdateFeature.swift */; };
-		8443CFAE2DD47953002AFBB9 /* UserDeviceSettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443CFAD2DD47948002AFBB9 /* UserDeviceSettingsFeature.swift */; };
-		84698A0F2DB778E2006AD8FA /* TrainingSessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84698A0E2DB778E2006AD8FA /* TrainingSessionListView.swift */; };
-		84698A112DB77922006AD8FA /* TrainingSessionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84698A102DB77922006AD8FA /* TrainingSessionDetailsView.swift */; };
-		84698A132DB77937006AD8FA /* TrainingSessionEntriesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84698A122DB77937006AD8FA /* TrainingSessionEntriesRow.swift */; };
-		84698A152DB77D39006AD8FA /* TrainingSessionEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84698A142DB77D39006AD8FA /* TrainingSessionEntries.swift */; };
-		84698A172DB77D8C006AD8FA /* TrainingSessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84698A162DB77D8C006AD8FA /* TrainingSessionData.swift */; };
 		8499A2DC2E01576D006FD70A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8499A2DA2E01576D006FD70A /* Localizable.strings */; };
-		84B821432D6C908B005BB62C /* DateFolderDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B821422D6C908B005BB62C /* DateFolderDeletionView.swift */; };
-		84F0A1802CD0F76C009CF1A1 /* ActivityPhysicalDataConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0A17F2CD0F76C009CF1A1 /* ActivityPhysicalDataConfig.swift */; };
-		84F748FF2C63553400038A4B /* ActivityRecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F748FE2C63553400038A4B /* ActivityRecordingView.swift */; };
-		84F749012C63556500038A4B /* ActivityDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F749002C63556500038A4B /* ActivityDatePickerView.swift */; };
-		84F749032C63559A00038A4B /* ActivityRecordingDetailsview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F749022C63559A00038A4B /* ActivityRecordingDetailsview.swift */; };
-		84F749052C6355C400038A4B /* ActivityRecordingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F749042C6355C400038A4B /* ActivityRecordingData.swift */; };
 		9537D58B2CFF06E200B6A1E6 /* PolarBleDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537D58A2CFF06D900B6A1E6 /* PolarBleDeviceManager.swift */; };
 		95B4F1032CEB7A880010E2B6 /* CheckFirmwareUpdateFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4F1022CEB7A7C0010E2B6 /* CheckFirmwareUpdateFeature.swift */; };
-		95BA028D2D64B1030037F44E /* FilePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BA028C2D64B1030037F44E /* FilePicker.swift */; };
-		95EA2BA22D40E7B200657DE5 /* SleepRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EA2BA12D40E7A800657DE5 /* SleepRecordingFeature.swift */; };
 		AA74C2212BDA377D005E0908 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2202BDA377D005E0908 /* ContentView.swift */; };
 		AA74C2232BDA39D6005E0908 /* PolarBleSdkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2222BDA39D6005E0908 /* PolarBleSdkManager.swift */; };
 		AA74C2262BDA3A49005E0908 /* DeviceConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2252BDA3A49005E0908 /* DeviceConnectionState.swift */; };
 		AA74C2282BDA3B67005E0908 /* DeviceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2272BDA3B67005E0908 /* DeviceSearch.swift */; };
 		AA74C22A2BDA3B99005E0908 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2292BDA3B99005E0908 /* Messages.swift */; };
-		AA74C22C2BDA3BAF005E0908 /* RecordingSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C22B2BDA3BAF005E0908 /* RecordingSettings.swift */; };
-		AA74C22E2BDA3BC4005E0908 /* OfflineRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C22D2BDA3BC4005E0908 /* OfflineRecordingFeature.swift */; };
-		AA74C2302BDA3BD8005E0908 /* OfflineRecordingEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C22F2BDA3BD8005E0908 /* OfflineRecordingEntries.swift */; };
-		AA74C2322BDA3BED005E0908 /* OfflineRecordingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2312BDA3BED005E0908 /* OfflineRecordingData.swift */; };
-		AA74C2342BDA3C08005E0908 /* OnlineStreamingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2332BDA3C08005E0908 /* OnlineStreamingFeature.swift */; };
-		AA74C2362BDA3C19005E0908 /* DeviceTimeSetupFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2352BDA3C19005E0908 /* DeviceTimeSetupFeature.swift */; };
-		AA74C2382BDA3C35005E0908 /* SdkModeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2372BDA3C35005E0908 /* SdkModeFeature.swift */; };
-		AA74C23A2BDA3C56005E0908 /* H10ExerciseRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2392BDA3C56005E0908 /* H10ExerciseRecordingFeature.swift */; };
 		AA74C23C2BDA3C64005E0908 /* DeviceInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C23B2BDA3C64005E0908 /* DeviceInfoFeature.swift */; };
 		AA74C23E2BDA3C78005E0908 /* BatteryStatusFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C23D2BDA3C78005E0908 /* BatteryStatusFeature.swift */; };
-		AA74C2402BDA3C8C005E0908 /* LedAnimationFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C23F2BDA3C8C005E0908 /* LedAnimationFeature.swift */; };
 		AA74C2432BDA3D45005E0908 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2422BDA3D45005E0908 /* ButtonStyle.swift */; };
 		AA74C2472BDA3DA2005E0908 /* DeviceSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2462BDA3DA2005E0908 /* DeviceSearchView.swift */; };
 		AA74C2492BDA3DAF005E0908 /* DeviceSearchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2482BDA3DAF005E0908 /* DeviceSearchRow.swift */; };
-		AA74C24C2BDA3DE6005E0908 /* DevicesettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C24B2BDA3DE6005E0908 /* DevicesettingsView.swift */; };
 		AA74C24F2BDA3E2F005E0908 /* OnlineStreamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C24E2BDA3E2F005E0908 /* OnlineStreamsView.swift */; };
-		AA74C2522BDA3E75005E0908 /* OfflineRecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2512BDA3E75005E0908 /* OfflineRecordingView.swift */; };
-		AA74C2542BDA3E86005E0908 /* OfflineRecordingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2532BDA3E86005E0908 /* OfflineRecordingStartView.swift */; };
-		AA74C2562BDA3E9B005E0908 /* OfflineRecordingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2552BDA3E9B005E0908 /* OfflineRecordingListView.swift */; };
-		AA74C2582BDA3EBF005E0908 /* OfflineRecordingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2572BDA3EBF005E0908 /* OfflineRecordingDetailsView.swift */; };
-		AA74C25A2BDA3ED8005E0908 /* OfflineRecordingEntriesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2592BDA3ED8005E0908 /* OfflineRecordingEntriesRow.swift */; };
 		AA74C25C2BDA3F3E005E0908 /* UiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C25B2BDA3F3E005E0908 /* UiHelper.swift */; };
 		AA74C25E2BDA3F77005E0908 /* PSDCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C25D2BDA3F77005E0908 /* PSDCApp.swift */; };
-		AA74C2602BDA3FD5005E0908 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C25F2BDA3FD5005E0908 /* SettingsView.swift */; };
-		AA74C2632BDA4FBA005E0908 /* SensorDatalogSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2622BDA4FBA005E0908 /* SensorDatalogSettingsView.swift */; };
-		AA74C2682BDA7215005E0908 /* H10ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74C2672BDA7215005E0908 /* H10ExerciseView.swift */; };
 		AAA0FE012BE9EF22005368A7 /* HrRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0FE002BE9EF22005368A7 /* HrRecordingFeature.swift */; };
-		AAA0FE032BEA354A005368A7 /* EcgRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0FE022BEA354A005368A7 /* EcgRecordingFeature.swift */; };
 		AAA0FE052BEA3769005368A7 /* AccRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0FE042BEA3769005368A7 /* AccRecordingFeature.swift */; };
-		AAA0FE072BEA386F005368A7 /* PpgRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0FE062BEA386F005368A7 /* PpgRecordingFeature.swift */; };
-		AAA0FE092BEA3B42005368A7 /* PpiRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0FE082BEA3B42005368A7 /* PpiRecordingFeature.swift */; };
-		AAA0FE0B2BEA3D00005368A7 /* GyroRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0FE0A2BEA3D00005368A7 /* GyroRecordingFeature.swift */; };
-		AAA0FE0D2BEA3E1A005368A7 /* MagnetometerRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA0FE0C2BEA3E1A005368A7 /* MagnetometerRecordingFeature.swift */; };
-		AAB841F42E13A5F000810B09 /* MultiBleFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB841F32E13A5F000810B09 /* MultiBleFeature.swift */; };
-		AABC2A3F2C85BABB00BFC6BD /* PressureRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC2A3D2C85BABB00BFC6BD /* PressureRecordingFeature.swift */; };
-		AABC2A402C85BABB00BFC6BD /* SDLogConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC2A3E2C85BABB00BFC6BD /* SDLogConfiguration.swift */; };
-		AAC9FCA02DCCAEB200CFA655 /* UserDeviceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9FC9F2DCCAEAB00CFA655 /* UserDeviceSettingsView.swift */; };
-		AACBC92C2BEB5C89003A5D1B /* TemperatureRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBC92B2BEB5C89003A5D1B /* TemperatureRecordingFeature.swift */; };
-		AAD1C8612D26760100F169BA /* SkinTemperatureRecordingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1C8602D26760100F169BA /* SkinTemperatureRecordingFeature.swift */; };
-		AAE726462CB654A700007C6C /* DataDeletionSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE726452CB654A700007C6C /* DataDeletionSelections.swift */; };
-		AAE726482CB654D000007C6C /* DataDeletionFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE726472CB654D000007C6C /* DataDeletionFeature.swift */; };
 		AAFA1C6C2C97EB74004DC8C8 /* MenuStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA1C6B2C97EB74004DC8C8 /* MenuStyle.swift */; };
-		CC57B5DC2E60618900E90F5B /* ExerciseUIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC57B5DB2E60617F00E90F5B /* ExerciseUIState.swift */; };
-		CC57B5DE2E60619400E90F5B /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC57B5DD2E60618D00E90F5B /* ExerciseView.swift */; };
+		AF37006FE9CF30DD32C5FD49 /* SupabaseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5B0BE1229A41EFFA1EE78F /* SupabaseModels.swift */; };
+		CD3F08CBCFE68806B73DD542 /* SupabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD7844D3E5091A547B59FD7 /* SupabaseManager.swift */; };
+		D4049D8182555C0920092A40 /* PatientSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC9B7E02669BC18D06AFDA /* PatientSetupView.swift */; };
+		E46117CCF8A6C58CEB9A2AF1 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACF6DD0023BFB391F673DDE /* SupabaseConfig.swift */; };
 		EFC90D59C9EAFEB4A663ACE5 /* Pods_PSDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB654535DD0D50AFF0A44E38 /* Pods_PSDC.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +74,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0ACF6DD0023BFB391F673DDE /* SupabaseConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		1DD7844D3E5091A547B59FD7 /* SupabaseManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseManager.swift; sourceTree = "<group>"; };
 		20AE5DFFB9E2A1A7CD2955F0 /* Pods-PSDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSDC.debug.xcconfig"; path = "Target Support Files/Pods-PSDC/Pods-PSDC.debug.xcconfig"; sourceTree = "<group>"; };
+		5C24369BEC0EB0547526FF76 /* SupabaseManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseManager.swift; sourceTree = "<group>"; };
 		671CC8F36BE17D0395634D79 /* Pods-PSDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSDC.release.xcconfig"; path = "Target Support Files/Pods-PSDC/Pods-PSDC.release.xcconfig"; sourceTree = "<group>"; };
 		6C2EDE7E22B9FE360031AA17 /* PSDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2EDE8822B9FE370031AA17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +97,8 @@
 		84F749002C63556500038A4B /* ActivityDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDatePickerView.swift; sourceTree = "<group>"; };
 		84F749022C63559A00038A4B /* ActivityRecordingDetailsview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecordingDetailsview.swift; sourceTree = "<group>"; };
 		84F749042C6355C400038A4B /* ActivityRecordingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecordingData.swift; sourceTree = "<group>"; };
+		896DBBE884A802F47E3A6D15 /* SupabaseConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		923054AF3EAE1ABEE54102D4 /* Views/PatientSetupView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Views/PatientSetupView.swift; sourceTree = "<group>"; };
 		9537D58A2CFF06D900B6A1E6 /* PolarBleDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarBleDeviceManager.swift; sourceTree = "<group>"; };
 		9559A5F72D267B960003DC6F /* SkinTemperatureRecordingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTemperatureRecordingFeature.swift; sourceTree = "<group>"; };
 		95A381E52D27DEC9005DB1BA /* PSDC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PSDC.entitlements; sourceTree = "<group>"; };
@@ -130,7 +116,6 @@
 		AA74C22D2BDA3BC4005E0908 /* OfflineRecordingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineRecordingFeature.swift; sourceTree = "<group>"; };
 		AA74C22F2BDA3BD8005E0908 /* OfflineRecordingEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineRecordingEntries.swift; sourceTree = "<group>"; };
 		AA74C2312BDA3BED005E0908 /* OfflineRecordingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineRecordingData.swift; sourceTree = "<group>"; };
-		AA74C2332BDA3C08005E0908 /* OnlineStreamingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineStreamingFeature.swift; sourceTree = "<group>"; };
 		AA74C2352BDA3C19005E0908 /* DeviceTimeSetupFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTimeSetupFeature.swift; sourceTree = "<group>"; };
 		AA74C2372BDA3C35005E0908 /* SdkModeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SdkModeFeature.swift; sourceTree = "<group>"; };
 		AA74C2392BDA3C56005E0908 /* H10ExerciseRecordingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H10ExerciseRecordingFeature.swift; sourceTree = "<group>"; };
@@ -149,8 +134,6 @@
 		AA74C2592BDA3ED8005E0908 /* OfflineRecordingEntriesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineRecordingEntriesRow.swift; sourceTree = "<group>"; };
 		AA74C25B2BDA3F3E005E0908 /* UiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiHelper.swift; sourceTree = "<group>"; };
 		AA74C25D2BDA3F77005E0908 /* PSDCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSDCApp.swift; sourceTree = "<group>"; };
-		AA74C25F2BDA3FD5005E0908 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		AA74C2622BDA4FBA005E0908 /* SensorDatalogSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDatalogSettingsView.swift; sourceTree = "<group>"; };
 		AA74C2672BDA7215005E0908 /* H10ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H10ExerciseView.swift; sourceTree = "<group>"; };
 		AA7C73292BC4F871006C0645 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA0FE002BE9EF22005368A7 /* HrRecordingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HrRecordingFeature.swift; sourceTree = "<group>"; };
@@ -163,15 +146,17 @@
 		AAB841F32E13A5F000810B09 /* MultiBleFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiBleFeature.swift; sourceTree = "<group>"; };
 		AABC2A3D2C85BABB00BFC6BD /* PressureRecordingFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureRecordingFeature.swift; sourceTree = "<group>"; };
 		AABC2A3E2C85BABB00BFC6BD /* SDLogConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDLogConfiguration.swift; sourceTree = "<group>"; };
-		AAC9FC9F2DCCAEAB00CFA655 /* UserDeviceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeviceSettingsView.swift; sourceTree = "<group>"; };
 		AACBC92B2BEB5C89003A5D1B /* TemperatureRecordingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureRecordingFeature.swift; sourceTree = "<group>"; };
 		AAD1C8602D26760100F169BA /* SkinTemperatureRecordingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTemperatureRecordingFeature.swift; sourceTree = "<group>"; };
 		AAE726452CB654A700007C6C /* DataDeletionSelections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionSelections.swift; sourceTree = "<group>"; };
 		AAE726472CB654D000007C6C /* DataDeletionFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionFeature.swift; sourceTree = "<group>"; };
 		AAFA1C6B2C97EB74004DC8C8 /* MenuStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuStyle.swift; sourceTree = "<group>"; };
+		B76A97E423B64FB53C5275E4 /* SimpleSettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SimpleSettingsView.swift; sourceTree = "<group>"; };
 		BB654535DD0D50AFF0A44E38 /* Pods_PSDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC57B5DB2E60617F00E90F5B /* ExerciseUIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseUIState.swift; sourceTree = "<group>"; };
 		CC57B5DD2E60618D00E90F5B /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
+		CC5B0BE1229A41EFFA1EE78F /* SupabaseModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseModels.swift; sourceTree = "<group>"; };
+		F7CC9B7E02669BC18D06AFDA /* PatientSetupView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PatientSetupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +164,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F3984A2E9016D900B261E4 /* Realtime in Frameworks */,
+				27F3982C2E8FFA4400B261E4 /* Storage in Frameworks */,
+				27F3984C2E9016D900B261E4 /* Storage in Frameworks */,
+				27F398282E8FFA4400B261E4 /* PostgREST in Frameworks */,
+				27F398442E9016D900B261E4 /* Auth in Frameworks */,
+				27F398362E9008E100B261E4 /* Storage in Frameworks */,
+				27F398482E9016D900B261E4 /* PostgREST in Frameworks */,
+				27F398302E9008E100B261E4 /* Functions in Frameworks */,
+				27F3983C2E9016BA00B261E4 /* Functions in Frameworks */,
+				27F398342E9008E100B261E4 /* Realtime in Frameworks */,
+				27F398422E9016BA00B261E4 /* Storage in Frameworks */,
+				27F398322E9008E100B261E4 /* PostgREST in Frameworks */,
+				27F398262E8FFA4400B261E4 /* Functions in Frameworks */,
+				27F3983A2E9016BA00B261E4 /* Auth in Frameworks */,
+				27F398462E9016D900B261E4 /* Functions in Frameworks */,
+				27F3983E2E9016BA00B261E4 /* PostgREST in Frameworks */,
+				27F3982E2E9008E100B261E4 /* Auth in Frameworks */,
+				27F398402E9016BA00B261E4 /* Realtime in Frameworks */,
+				27F398382E9009B000B261E4 /* Supabase in Frameworks */,
+				27F398242E8FFA4400B261E4 /* Auth in Frameworks */,
+				27F3982A2E8FFA4400B261E4 /* Realtime in Frameworks */,
 				EFC90D59C9EAFEB4A663ACE5 /* Pods_PSDC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +223,10 @@
 				6C2EDE8D22B9FE370031AA17 /* Info.plist */,
 				95A381E52D27DEC9005DB1BA /* PSDC.entitlements */,
 				8499A2DA2E01576D006FD70A /* Localizable.strings */,
+				CC710650803A5D0F48B93538 /* Config */,
+				1DD7844D3E5091A547B59FD7 /* SupabaseManager.swift */,
+				5C24369BEC0EB0547526FF76 /* SupabaseManager.swift */,
+				0ACF6DD0023BFB391F673DDE /* SupabaseConfig.swift */,
 			);
 			path = PSDC;
 			sourceTree = "<group>";
@@ -285,7 +295,6 @@
 				AA74C22D2BDA3BC4005E0908 /* OfflineRecordingFeature.swift */,
 				AA74C22F2BDA3BD8005E0908 /* OfflineRecordingEntries.swift */,
 				AA74C2312BDA3BED005E0908 /* OfflineRecordingData.swift */,
-				AA74C2332BDA3C08005E0908 /* OnlineStreamingFeature.swift */,
 				AA74C2352BDA3C19005E0908 /* DeviceTimeSetupFeature.swift */,
 				AA74C2372BDA3C35005E0908 /* SdkModeFeature.swift */,
 				AA74C2392BDA3C56005E0908 /* H10ExerciseRecordingFeature.swift */,
@@ -307,6 +316,7 @@
 				AAE726472CB654D000007C6C /* DataDeletionFeature.swift */,
 				84698A142DB77D39006AD8FA /* TrainingSessionEntries.swift */,
 				84698A162DB77D8C006AD8FA /* TrainingSessionData.swift */,
+				CC5B0BE1229A41EFFA1EE78F /* SupabaseModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -336,7 +346,9 @@
 				AA74C2452BDA3D8B005E0908 /* DeviceSearch */,
 				AA74C2202BDA377D005E0908 /* ContentView.swift */,
 				AA74C25B2BDA3F3E005E0908 /* UiHelper.swift */,
-				AA74C25F2BDA3FD5005E0908 /* SettingsView.swift */,
+				B76A97E423B64FB53C5275E4 /* SimpleSettingsView.swift */,
+				923054AF3EAE1ABEE54102D4 /* Views/PatientSetupView.swift */,
+				F7CC9B7E02669BC18D06AFDA /* PatientSetupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -353,7 +365,6 @@
 		AA74C24A2BDA3DCC005E0908 /* DeviceSettings */ = {
 			isa = PBXGroup;
 			children = (
-				AAC9FC9F2DCCAEAB00CFA655 /* UserDeviceSettingsView.swift */,
 				AA74C24B2BDA3DE6005E0908 /* DevicesettingsView.swift */,
 				AAE726452CB654A700007C6C /* DataDeletionSelections.swift */,
 				95BA028C2D64B1030037F44E /* FilePicker.swift */,
@@ -385,7 +396,6 @@
 		AA74C2612BDA4F9E005E0908 /* SensorDataLogSettings */ = {
 			isa = PBXGroup;
 			children = (
-				AA74C2622BDA4FBA005E0908 /* SensorDatalogSettingsView.swift */,
 			);
 			path = SensorDataLogSettings;
 			sourceTree = "<group>";
@@ -405,6 +415,14 @@
 				CC57B5DB2E60617F00E90F5B /* ExerciseUIState.swift */,
 			);
 			path = ExerciseSession;
+			sourceTree = "<group>";
+		};
+		CC710650803A5D0F48B93538 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				896DBBE884A802F47E3A6D15 /* SupabaseConfig.swift */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,6 +479,9 @@
 				Base,
 			);
 			mainGroup = 6C2EDE7522B9FE350031AA17;
+			packageReferences = (
+				27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			productRefGroup = 6C2EDE7F22B9FE360031AA17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -551,72 +572,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA74C2632BDA4FBA005E0908 /* SensorDatalogSettingsView.swift in Sources */,
-				AAA0FE032BEA354A005368A7 /* EcgRecordingFeature.swift in Sources */,
 				AA74C25C2BDA3F3E005E0908 /* UiHelper.swift in Sources */,
-				AA74C2542BDA3E86005E0908 /* OfflineRecordingStartView.swift in Sources */,
-				84698A112DB77922006AD8FA /* TrainingSessionDetailsView.swift in Sources */,
-				AA74C2302BDA3BD8005E0908 /* OfflineRecordingEntries.swift in Sources */,
-				AAA0FE072BEA386F005368A7 /* PpgRecordingFeature.swift in Sources */,
-				CC57B5DC2E60618900E90F5B /* ExerciseUIState.swift in Sources */,
-				84F0A1802CD0F76C009CF1A1 /* ActivityPhysicalDataConfig.swift in Sources */,
 				AA74C23C2BDA3C64005E0908 /* DeviceInfoFeature.swift in Sources */,
 				AA74C24F2BDA3E2F005E0908 /* OnlineStreamsView.swift in Sources */,
 				AA74C22A2BDA3B99005E0908 /* Messages.swift in Sources */,
 				95B4F1032CEB7A880010E2B6 /* CheckFirmwareUpdateFeature.swift in Sources */,
 				AA74C2492BDA3DAF005E0908 /* DeviceSearchRow.swift in Sources */,
 				9537D58B2CFF06E200B6A1E6 /* PolarBleDeviceManager.swift in Sources */,
-				AA74C22E2BDA3BC4005E0908 /* OfflineRecordingFeature.swift in Sources */,
 				AA74C2472BDA3DA2005E0908 /* DeviceSearchView.swift in Sources */,
 				AA74C2262BDA3A49005E0908 /* DeviceConnectionState.swift in Sources */,
-				CC57B5DE2E60619400E90F5B /* ExerciseView.swift in Sources */,
-				AA74C2362BDA3C19005E0908 /* DeviceTimeSetupFeature.swift in Sources */,
-				AA74C2522BDA3E75005E0908 /* OfflineRecordingView.swift in Sources */,
-				AAD1C8612D26760100F169BA /* SkinTemperatureRecordingFeature.swift in Sources */,
-				AA74C2322BDA3BED005E0908 /* OfflineRecordingData.swift in Sources */,
-				AA74C2382BDA3C35005E0908 /* SdkModeFeature.swift in Sources */,
-				AACBC92C2BEB5C89003A5D1B /* TemperatureRecordingFeature.swift in Sources */,
-				AAA0FE0B2BEA3D00005368A7 /* GyroRecordingFeature.swift in Sources */,
 				AA74C2282BDA3B67005E0908 /* DeviceSearch.swift in Sources */,
-				84B821432D6C908B005BB62C /* DateFolderDeletionView.swift in Sources */,
-				AAB841F42E13A5F000810B09 /* MultiBleFeature.swift in Sources */,
-				84F748FF2C63553400038A4B /* ActivityRecordingView.swift in Sources */,
-				AA74C22C2BDA3BAF005E0908 /* RecordingSettings.swift in Sources */,
-				8443CFAE2DD47953002AFBB9 /* UserDeviceSettingsFeature.swift in Sources */,
-				AAE726482CB654D000007C6C /* DataDeletionFeature.swift in Sources */,
-				AABC2A3F2C85BABB00BFC6BD /* PressureRecordingFeature.swift in Sources */,
-				AAC9FCA02DCCAEB200CFA655 /* UserDeviceSettingsView.swift in Sources */,
-				AA74C24C2BDA3DE6005E0908 /* DevicesettingsView.swift in Sources */,
 				AA74C2432BDA3D45005E0908 /* ButtonStyle.swift in Sources */,
 				AA74C2232BDA39D6005E0908 /* PolarBleSdkManager.swift in Sources */,
-				AAA0FE092BEA3B42005368A7 /* PpiRecordingFeature.swift in Sources */,
-				84F749052C6355C400038A4B /* ActivityRecordingData.swift in Sources */,
-				AA74C2402BDA3C8C005E0908 /* LedAnimationFeature.swift in Sources */,
-				AA74C25A2BDA3ED8005E0908 /* OfflineRecordingEntriesRow.swift in Sources */,
 				AAA0FE012BE9EF22005368A7 /* HrRecordingFeature.swift in Sources */,
 				AAFA1C6C2C97EB74004DC8C8 /* MenuStyle.swift in Sources */,
 				AA74C23E2BDA3C78005E0908 /* BatteryStatusFeature.swift in Sources */,
 				AA74C2212BDA377D005E0908 /* ContentView.swift in Sources */,
 				AA74C25E2BDA3F77005E0908 /* PSDCApp.swift in Sources */,
-				95BA028D2D64B1030037F44E /* FilePicker.swift in Sources */,
-				84698A152DB77D39006AD8FA /* TrainingSessionEntries.swift in Sources */,
-				84698A132DB77937006AD8FA /* TrainingSessionEntriesRow.swift in Sources */,
-				AA74C2682BDA7215005E0908 /* H10ExerciseView.swift in Sources */,
 				AAA0FE052BEA3769005368A7 /* AccRecordingFeature.swift in Sources */,
-				84698A172DB77D8C006AD8FA /* TrainingSessionData.swift in Sources */,
-				AA74C2562BDA3E9B005E0908 /* OfflineRecordingListView.swift in Sources */,
 				8415B05A2C2C38FB00AA4C9B /* FirmwareUpdateFeature.swift in Sources */,
-				95EA2BA22D40E7B200657DE5 /* SleepRecordingFeature.swift in Sources */,
-				AABC2A402C85BABB00BFC6BD /* SDLogConfiguration.swift in Sources */,
-				AA74C2342BDA3C08005E0908 /* OnlineStreamingFeature.swift in Sources */,
-				AAA0FE0D2BEA3E1A005368A7 /* MagnetometerRecordingFeature.swift in Sources */,
-				84698A0F2DB778E2006AD8FA /* TrainingSessionListView.swift in Sources */,
-				AA74C23A2BDA3C56005E0908 /* H10ExerciseRecordingFeature.swift in Sources */,
-				84F749032C63559A00038A4B /* ActivityRecordingDetailsview.swift in Sources */,
-				84F749012C63556500038A4B /* ActivityDatePickerView.swift in Sources */,
-				AAE726462CB654A700007C6C /* DataDeletionSelections.swift in Sources */,
-				AA74C2582BDA3EBF005E0908 /* OfflineRecordingDetailsView.swift in Sources */,
-				AA74C2602BDA3FD5005E0908 /* SettingsView.swift in Sources */,
+				1D68B8DB9FA6E3A353FAE66C /* SimpleSettingsView.swift in Sources */,
+				AF37006FE9CF30DD32C5FD49 /* SupabaseModels.swift in Sources */,
+				CD3F08CBCFE68806B73DD542 /* SupabaseManager.swift in Sources */,
+				4B1ACDDF66743177FA8F1B24 /* SupabaseConfig.swift in Sources */,
+				3E4F4BEB80FF3106FE928A53 /* SupabaseManager.swift in Sources */,
+				E46117CCF8A6C58CEB9A2AF1 /* SupabaseConfig.swift in Sources */,
+				D4049D8182555C0920092A40 /* PatientSetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,6 +859,125 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27F398232E8FFA4400B261E4 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		27F398252E8FFA4400B261E4 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		27F398272E8FFA4400B261E4 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		27F398292E8FFA4400B261E4 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		27F3982B2E8FFA4400B261E4 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		27F3982D2E9008E100B261E4 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		27F3982F2E9008E100B261E4 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		27F398312E9008E100B261E4 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		27F398332E9008E100B261E4 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		27F398352E9008E100B261E4 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		27F398372E9009B000B261E4 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		27F398392E9016BA00B261E4 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		27F3983B2E9016BA00B261E4 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		27F3983D2E9016BA00B261E4 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		27F3983F2E9016BA00B261E4 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		27F398412E9016BA00B261E4 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		27F398432E9016D900B261E4 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		27F398452E9016D900B261E4 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		27F398472E9016D900B261E4 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		27F398492E9016D900B261E4 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		27F3984B2E9016D900B261E4 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27F398222E8FFA4400B261E4 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6C2EDE7622B9FE350031AA17 /* Project object */;
 }

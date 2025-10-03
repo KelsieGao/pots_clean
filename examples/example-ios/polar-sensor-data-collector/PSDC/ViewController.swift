@@ -32,11 +32,9 @@ class ViewController: UIViewController,
     }
     
     
-    @IBOutlet weak var ppgSelectButton: UIButton!
     @IBOutlet weak var accSelectButton: UIButton!
     @IBOutlet weak var connectionsButton: UIButton!
     @IBOutlet weak var disconnectButton: UIButton!
-    @IBOutlet weak var sensorDatalogButton: UIButton!
     
     var connectedDevices: [(PolarDeviceInfo, Disposable?)] = [] {
         didSet {
@@ -48,24 +46,17 @@ class ViewController: UIViewController,
     var api = PolarBleApiDefaultImpl.polarImplementation(DispatchQueue.main, features: [PolarBleSdkFeature.feature_polar_online_streaming,
                                                                                         PolarBleSdkFeature.feature_hr,
                                                                                         PolarBleSdkFeature.feature_battery_info,
-                                                                                        PolarBleSdkFeature.feature_device_info,
-                                                                                        PolarBleSdkFeature.feature_polar_offline_recording
+                                                                                        PolarBleSdkFeature.feature_device_info
                                                                                         ]
     )
-    var accSelected = false, ppgSelected = false
+    var accSelected = false
     var previousAccData: PolarAccData?
-    var previousPpgData: PolarPpgData?
-    var previousPpiData: PolarPpiData?
-    var previousEcgData: PolarEcgData?
     let collector = DataCollector()
     var timer: Disposable?
     var logConfig: SDLogConfig?
     let disposeBag = DisposeBag()
     var supportsSdLog = false
     
-    @IBOutlet weak var ecgSwitch: UISwitch!
-    @IBOutlet weak var ppiSwitch: UISwitch!
-    @IBOutlet weak var ppgSwitch: UISwitch!
     @IBOutlet weak var accSwitch: UISwitch!
     @IBOutlet weak var deviceState: UILabel!
     @IBOutlet weak var accZ: UILabel!
@@ -73,16 +64,10 @@ class ViewController: UIViewController,
     @IBOutlet weak var accX: UILabel!
     @IBOutlet weak var btState: UILabel!
     @IBOutlet weak var sdkVersion: UILabel!
-    @IBOutlet weak var ppg0: UILabel!
-    @IBOutlet weak var ppg1: UILabel!
-    @IBOutlet weak var ppg2: UILabel!
     @IBOutlet weak var batteryLevel: UILabel!
     @IBOutlet weak var firmwareVersion: UILabel!
     @IBOutlet weak var hr: UILabel!
     @IBOutlet weak var rrsMs: UILabel!
-    @IBOutlet weak var ecg: UILabel!
-    @IBOutlet weak var ppi: UILabel!
-    @IBOutlet weak var bioz: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,11 +78,6 @@ class ViewController: UIViewController,
         disconnectButton.isEnabled = !connectedDevices.isEmpty
         accSelectButton.layer.cornerRadius = 10
         accSelectButton.clipsToBounds = true
-        ppgSelectButton.layer.cornerRadius = 10
-        ppgSelectButton.clipsToBounds = true
-        sensorDatalogButton.layer.cornerRadius = 10
-        sensorDatalogButton.clipsToBounds = true
-        sensorDatalogButton.isEnabled = false
         api.observer = self
         api.deviceFeaturesObserver = self
         api.deviceHrObserver = self
@@ -137,26 +117,6 @@ class ViewController: UIViewController,
         selectedDevice = nil
     }
     
-    @IBAction func sensorSettings(_ sender: Any) {
-        if selectedDevice == nil {
-            sensorDatalogButton.isEnabled = false
-        } else {
-            checkLogConfigAvailability()
-            if self.supportsSdLog {
-                let storyboard = UIStoryboard(name: "SensorDatalogSettingsPopup", bundle: nil)
-                let datalogSettingsController = storyboard.instantiateViewController(withIdentifier: "SensorDatalogSettingsViewController") as! SensorDatalogSettingsViewController
-                datalogSettingsController.delegate = self
-                datalogSettingsController.api = api
-                datalogSettingsController.deviceId = self.selectedDevice!.deviceId
-                navigationController?.pushViewController(datalogSettingsController, animated: true)
-                self.modalPresentationStyle = UIModalPresentationStyle.currentContext
-                self.present(datalogSettingsController, animated: true, completion: nil)
-            } else {
-                sensorDatalogButton.isEnabled = false
-                sensorDatalogButton.setTitle("Sensor Datalog not supported", for: .disabled)
-            }
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -169,7 +129,6 @@ class ViewController: UIViewController,
         self.connectionsButton.setTitle("CONNECTIONS", for: .normal)
         do{
             try api.connectToDevice(device.deviceId)
-            sensorDatalogButton.isEnabled = true
         } catch let err {
             print("connect error: \(err)")
         }
@@ -189,10 +148,6 @@ class ViewController: UIViewController,
             }.disposed(by: disposeBag)
     }
     
-    @IBAction func ppgSelection(_ sender: Any) {
-        ppgSelected = !ppgSelected
-        ppgSelectButton.setTitle(ppgSelected ? "User selects" : "ACC default max", for: .normal)
-    }
     
     @IBAction func accSelection(_ sender: Any) {
         accSelected = !accSelected
@@ -239,38 +194,6 @@ class ViewController: UIViewController,
         
     }
     
-    func ecgFeatureReady(_ identifier: String) {
-        if ecgSwitch.isOn {
-            _ = api.requestStreamSettings(identifier, feature: PolarDeviceDataType.ecg)
-                .asObservable()
-                .flatMap({ (settings) -> Observable<PolarEcgData> in
-                    self.collector.startEcgStream(self.selectedDevice!.name)
-                    return self.api.startEcgStreaming(identifier, settings: settings.maxSettings())
-                })
-                .observe(on: MainScheduler.instance).subscribe{ e in
-                    switch e {
-                    case .completed:
-                        break
-                    case .next(let data):
-                        if self.previousEcgData != nil {
-                            let delta = (data.timeStamp - self.previousEcgData!.timeStamp) / UInt64(data.samples.count)
-                            var base = self.previousEcgData!.timeStamp - (UInt64(self.previousEcgData!.samples.count-1)*delta)
-                            self.previousEcgData!.samples.forEach({ (arg0) in
-                                self.collector.streamEcg(base, ecg: arg0.voltage)
-                                base += delta
-                            })
-                        }
-                        self.previousEcgData = data
-                        for sample in data.samples {
-                            self.ecg.text = "\(sample)"
-                        }
-                    case .error(let err):
-                        print("ECG error: \(err)")
-                        self.ecg.text = "-"
-                    }
-                }
-        }
-    }
     
     // TODO Fix this function as this does not get compiled with the latest changes in PolarBleApiDefaultImpl.
     /*func accFeatureReady(_ identifier: String) {
@@ -383,63 +306,11 @@ class ViewController: UIViewController,
         }
     } */
     
-    func ohrPPIFeatureReady(_ identifier: String) {
-        if ppiSwitch.isOn {
-            collector.startPPIStream(selectedDevice!.name)
-            _ = api.startPpiStreaming(identifier)
-                .observe(on: MainScheduler.instance)
-                .subscribe{ e in
-                    switch e {
-                    case .completed:
-                        break
-                    case .error(let err):
-                        NSLog("PPI error: \(err)")
-                        self.ppi.text = "-"
-                    case .next(let data):
-                        if self.previousPpiData != nil {
-                            let delta = (data.timeStamp - self.previousPpiData!.timeStamp) / UInt64(data.samples.count)
-                            var base = self.previousPpiData!.timeStamp - (UInt64(self.previousPpiData!.samples.count-1)*delta)
-                            self.previousPpiData!.samples.forEach({ (arg0) in
-                                self.collector.streamPpi(base, ppi: arg0.ppInMs, errorEstimate: arg0.ppErrorEstimate, blocker: arg0.blockerBit, contact: arg0.skinContactStatus, contactSupported: arg0.skinContactSupported, hr: arg0.hr)
-                                base += delta
-                            })
-                        }
-                        self.previousPpiData = data
-                        for item in data.samples {
-                            self.ppi.text = "\(item.ppInMs)"
-                        }
-                    }
-                }
-        }
-    }
     
     func ftpFeatureReady(_ identifier: String) {
         // do nothing
     }
     
-    func biozFeatureReady(_ identifier: String) {
-        if self.ppgSwitch.isOn {
-            _ = api.requestStreamSettings(identifier, feature: PolarDeviceDataType.ppg)
-                .asObservable()
-                .flatMap({ (settings) -> Observable<PolarPpgData> in
-                    self.api.startPpgStreaming(identifier, settings: settings.maxSettings())
-                })
-                .observe(on: MainScheduler.instance)
-                .subscribe { e in
-                    switch e {
-                    case .completed:
-                        break
-                    case .error(let err):
-                        print("BIOZ error: \(err)")
-                        self.bioz.text = "-"
-                    case .next(let value):
-                        value.samples.forEach({ (bioz) in
-                            self.bioz.text = "\(bioz)"
-                        })
-                    }
-                }
-        }
-    }
     
     func message(_ str: String) {
         NSLog(str)

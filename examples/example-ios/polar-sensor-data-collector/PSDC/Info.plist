@@ -5,7 +5,7 @@
 	<key>APP_GIT_BRANCH</key>
 	<string>master</string>
 	<key>APP_GIT_COMMIT</key>
-	<string>244cf23</string>
+	<string>2138257</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -25,13 +25,25 @@
 	<key>GIT_APP_LOCALLY_MODIFIED</key>
 	<string>examples/example-ios/polar-sensor-data-collector/PSDC.xcodeproj/project.pbxproj
 examples/example-ios/polar-sensor-data-collector/PSDC/Info.plist
-examples/example-ios/polar-sensor-data-collector/PSDC/PSDC.entitlements
-examples/example-ios/polar-sensor-data-collector/PSDC/PolarBleSdkManager.swift</string>
+examples/example-ios/polar-sensor-data-collector/PSDC/Models/OnlineStreamingFeature.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/PSDCApp.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/PolarBleDeviceManager.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/PolarBleSdkManager.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/ViewController.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/Views/ContentView.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/Views/OnlineStreaming/OnlineStreamsView.swift
+examples/example-ios/polar-sensor-data-collector/podfile</string>
 	<key>GIT_SDK_LOCALLY_MODIFIED</key>
 	<string>examples/example-ios/polar-sensor-data-collector/PSDC.xcodeproj/project.pbxproj
 examples/example-ios/polar-sensor-data-collector/PSDC/Info.plist
-examples/example-ios/polar-sensor-data-collector/PSDC/PSDC.entitlements
-examples/example-ios/polar-sensor-data-collector/PSDC/PolarBleSdkManager.swift</string>
+examples/example-ios/polar-sensor-data-collector/PSDC/Models/OnlineStreamingFeature.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/PSDCApp.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/PolarBleDeviceManager.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/PolarBleSdkManager.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/ViewController.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/Views/ContentView.swift
+examples/example-ios/polar-sensor-data-collector/PSDC/Views/OnlineStreaming/OnlineStreamsView.swift
+examples/example-ios/polar-sensor-data-collector/podfile</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.healthcare-fitness</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -43,7 +55,7 @@ examples/example-ios/polar-sensor-data-collector/PSDC/PolarBleSdkManager.swift</
 	<key>SDK_GIT_BRANCH</key>
 	<string>master</string>
 	<key>SDK_GIT_COMMIT</key>
-	<string>244cf23</string>
+	<string>2138257</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
