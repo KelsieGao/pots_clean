@@ -11,8 +11,8 @@ struct SupabaseConfig {
     // TODO: Replace these with your actual Supabase project credentials
     // Get these from your Supabase project dashboard: Settings → API
     
-    static let url = "https://zkhmvtqrklojgotbnmkt.supabase.co"
-    static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpraG12dHFya2xvamdvdGJubWt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0ODczMzMsImV4cCI6MjA3NTA2MzMzM30.kcCxlMhX2LcFYcRcEHN2WsWa7isHn8uaE-9zRUKRmn0"
+    static let url = "https://0ec90b57d6e95fcbda19832f.supabase.co"
+    static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJib2x0IiwicmVmIjoiMGVjOTBiNTdkNmU5NWZjYmRhMTk4MzJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4ODE1NzQsImV4cCI6MTc1ODg4MTU3NH0.9I8-U0x86Ak8t2DGaIk0HfvTSLsAyzdnz-Nw00mMkKw"
     
     // For production, these should be stored securely:
     // - Use environment variables
